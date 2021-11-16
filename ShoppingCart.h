@@ -1,26 +1,30 @@
 #pragma once
+#include <string.h>
+#include <iostream>
 #include "ItemNode.h"
-#include<iostream>
-
 using namespace std;
 
-class ShoppingCart
-{
+class ShoppingCart {
+private:
+	float totalCost;
+	int count;
+	ItemNode* front;
+
 public:
 	ShoppingCart();
 	float calcTotalPrice();
+
 	int totalItems();
 	void displayCart();
-	int searchById(int);
-	void searchByPrice(float);
+	void searchById(int id); 
+	void searchByPrice(float price);
 	void sortByPrice();
 	bool removeItemFront();
 	void removeItemBack();
-	bool removeItemAtPostion(int);
-	void addItemFront(ItemNode);
-	void addItemBack(ItemNode);
-	bool addItemAtPosition(ItemNode, int);
-private:
-
+	bool removeItemAtPosition(int position);
+	void addItemFront(ItemNode* cartItem);
+	void addItemBack(ItemNode* cartItem);
+	bool addItemAtPosition(ItemNode* cartItem, int position);
+	float gettotalCost();
+	void settotalCost();
 };
-

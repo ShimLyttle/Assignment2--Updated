@@ -1,27 +1,26 @@
 #pragma once
-#include <cstddef>
-#include<iostream>
-#include<vector>
+#include <string.h>
+#include <iostream>
 
 using namespace std;
 
 class ItemNode {
-public:
-	ItemNode();
-	void printData(int, string, float);
-	string getItemName();
-	void setItemName();
-	float getPrice();
-	void setPrice();
-	int getId();
-	void setId();
-	void getItemNode();
-	void setItemNode();
-
 private:
 	string itemName;
 	float price;
 	int id;
 	ItemNode* nextPtr;
-	ItemNode* temp;
+
+public:
+	ItemNode(string line);
+	void printData();
+	void setitemName(string Itemname);
+	string getitemName();
+	void setprice(float Price);
+	float getprice();
+	void setid(int Id);
+	int getid();
+	void setnextPtr(ItemNode* nextptr);
+	ItemNode* getnextPtr();
+
 };

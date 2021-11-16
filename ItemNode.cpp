@@ -1,57 +1,52 @@
-#include<iostream>
-#include<iomanip>
-#include<fstream>
+#include <string.h>
+#include <iostream>
 #include "ItemNode.h"
-#include "ItemNode.h"
-
+#include <sstream>
 using namespace std;
 
 
-void ItemNode::printData(int id, string name, float price) {
-	cout << "  | ID\t\t| NAME\t| PRICE\t|" << endl << endl;
-	cout << "---------------------------------------------" << endl << endl;
-	cout << "  | " << id << "\t\t| " << name << "\t| $" << price << "\t|" << endl << endl;
+ItemNode::ItemNode(string line) {
+	itemName = "";
+	id = 0;
+	nextPtr = NULL;
+	price = 0.00f;
 
+	istringstream iss(line);
+	iss >> id >> itemName >> price;
 }
 
-/* 
-typedef ItemNode* nodePtr;
- ItemNode::ItemNode() {
-	 nodePtr head;
-	 head = new ItemNode;
-	 ifstream itemList{ "items.txt" };
-	 if (itemList)
-	 {
-		 head->id = 3;
-		 head->itemName = "Hello";
-		 head->price = 12.00;
-		 head->nextPtr = NULL;
-		 cout << "Success";
-	 }
-	 else
-	 {
-		 cout << "Error";
-	 }
-	 itemList.close();
-
+void ItemNode::printData() {
+	cout << "  " << id << " " << itemName << " " << price << endl;
 }
-*/
 
-ItemNode::ItemNode() {
-	string line;
-	ifstream itemList{ "items.txt" };
-	if (itemList)
-	{
-		cout << "working";
-		while (itemList >> a >> b >> c)
-		{
-			cout << "COUT : " << a << b << c << endl;
-			printf("PRINT FUNCTION", a, b, c);
-		}
-	}
-	else
-	{
-		cout << "Not working";
-	}
-	
+void ItemNode::setitemName(string Itemname) {
+	itemName = Itemname;
 }
+
+string ItemNode::getitemName() {
+	return itemName;
+}
+
+void ItemNode::setprice(float Price) {
+	price = Price;
+}
+
+float ItemNode::getprice() {
+	return price;
+}
+
+void ItemNode::setid(int Id) {
+	id = Id;
+}
+
+int ItemNode::getid() {
+	return id;
+}
+
+void ItemNode::setnextPtr(ItemNode* nextptr) {
+	nextPtr=nextptr;
+}
+
+ItemNode* ItemNode::getnextPtr() {
+	return nextPtr;
+} //end class definition
